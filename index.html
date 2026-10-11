@@ -1,0 +1,1727 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#05070b">
+  <title>YSN STUDIO — YASIIN EDIT</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #168cff;
+      --bg: #05070b;
+      --text: #f5f8ff;
+      --muted: #a0aabe;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 20px 7%;
+      border-bottom: 1px solid #182131;
+      background: #05070beF;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      backdrop-filter: blur(14px);
+    }
+
+    .logo { font-size: 19px; font-weight: 900; letter-spacing: 1px; }
+    .logo span { color: var(--blue); }
+
+    nav { display: flex; flex-wrap: wrap; gap: 22px; }
+    nav a { color: #c1c9d8; font-size: 12px; transition: color .2s; }
+    nav a:hover { color: var(--blue); }
+.menu-toggle {
+  display: none;
+  background: #05070b;
+  color: #ffffff;
+  border: 1px solid var(--blue);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 0 0 12px #168cff30;
+}
+    .hero {
+      min-height: 78vh;
+      display: flex;
+      align-items: center;
+      padding: 90px 9%;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 80% 45%, #073b7755, transparent 42%),
+        linear-gradient(120deg, #05070b 35%, #091323 100%);
+    }
+
+    .hero::after {
+      content: "C7Y7";
+      position: absolute;
+      right: -2%;
+      bottom: -10%;
+      font-size: clamp(140px, 28vw, 390px);
+      font-weight: 900;
+      letter-spacing: -15px;
+      color: #168cff0b;
+      pointer-events: none;
+    }
+
+    .hero-content { max-width: 760px; position: relative; z-index: 1; }
+
+    .eyebrow {
+      color: var(--blue);
+      letter-spacing: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(44px, 8vw, 100px);
+      line-height: .98;
+      letter-spacing: -4px;
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      color: transparent;
+      -webkit-text-stroke: 1px var(--blue);
+    }
+
+    .intro {
+      max-width: 550px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 22px;
+      border: 1px solid var(--blue);
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: .25s;
+    }
+
+    .btn.primary {
+      background: var(--blue);
+      color: #030812;
+      box-shadow: 0 0 25px #168cff35;
+    }
+
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 0 25px #168cff55; }
+
+    .section { padding: 80px 8%; }
+    .section-head { margin-bottom: 32px; }
+    .section-head p { color: var(--blue); font-size: 11px; letter-spacing: 3px; margin-bottom: 12px; }
+    .section-head h2 { font-size: clamp(28px, 4vw, 42px); }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+    .card {
+      border: 1px solid #202b3c;
+      background: linear-gradient(145deg, #0d1420, #080b11);
+      padding: 28px;
+      min-height: 190px;
+      transition: .25s;
+    }
+
+    .card:hover { border-color: var(--blue); transform: translateY(-4px); }
+    .card .number { color: var(--blue); font-size: 12px; margin-bottom: 30px; }
+    .card h3 { font-size: 20px; margin-bottom: 12px; }
+    .card p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+
+    .contact {
+      border-top: 1px solid #182131;
+      text-align: center;
+      background: radial-gradient(ellipse at center, #0a2440, #05070b 70%);
+    }
+
+    .contact p { color: var(--muted); margin: 18px auto 28px; line-height: 1.8; }
+    footer { padding: 26px 8%; border-top: 1px solid #182131; color: #8792a6; font-size: 12px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+   @media (max-width: 760px) {
+  header {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  header nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 14px;
+    padding-top: 12px;
+  }
+
+  header.menu-open nav {
+    display: flex;
+  }
+
+  .hero {
+    min-height: 70vh;
+    padding: 75px 7%;
+  }
+
+  h1 {
+    letter-spacing: -2px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 60px 7%;
+  }
+}
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+ 
+.hero {
+  background:
+    linear-gradient(90deg, #05070b 5%, #05070bd9 45%, #05070b33 100%),
+    
+url("images/Ronaldo-Purple.jpg") center 15% / cover no-repeat;
+}
+  .contact-form {
+  max-width: 620px;
+  margin: 40px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.contact-form label {
+  color: #dbe7ff;
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  padding: 15px;
+  color: #ffffff;
+  background: #0a0d15;
+  border: 1px solid #263754;
+  border-radius: 8px;
+  font: inherit;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  border-color: #2589ff;
+  box-shadow: 0 0 12px #2589ff30;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.contact-form select {
+  cursor: pointer;
+}
+
+.contact-form select option {
+  background: #0a0d15;
+  color: #ffffff;
+}
+
+.contact-form button {
+  margin-top: 18px;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #778399;
+}
+س
+</style>
+<style>
+
+/* YSN STUDIO — PROFESSIONAL CHAT */
+#chat {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  background: #050810;
+  color: #eef5ff;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px) scale(.99);
+  transition: opacity .3s ease, transform .3s ease, visibility .3s ease;
+}
+
+#chat:target {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+#chat .chat-app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(ellipse at 80% 0%, #10213a 0, transparent 45%), #050810;
+}
+
+#chat .chat-topbar {
+  min-height: 76px;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid #25334a;
+  background: #080d16;
+  box-sizing: border-box;
+}
+
+#chat .chat-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#chat .chat-brand-icon,
+#chat .chat-welcome-icon,
+#chat .chat-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: #07110c;
+  font-weight: 900;
+  background: linear-gradient(135deg, #a5ff53, #28d98b);
+  border-radius: 12px;
+}
+
+#chat .chat-brand-icon {
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
+}
+
+#chat .chat-brand h2,
+#chat .chat-brand p,
+#chat .chat-conversation-header h3,
+#chat .chat-conversation-header p {
+  margin: 0;
+}
+
+#chat .chat-brand h2 {
+  font-size: 16px;
+  letter-spacing: 1.5px;
+}
+
+#chat .chat-brand p,
+#chat .chat-conversation-header p {
+  margin-top: 5px;
+  color: #8190a8;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+#chat .chat-close {
+  position: static;
+  padding: 10px 14px;
+  color: #eaf2ff;
+  text-decoration: none;
+  border: 1px solid #34445c;
+  border-radius: 8px;
+  background: #101827;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+#chat .chat-close:hover {
+  border-color: #a5ff53;
+  color: #a5ff53;
+}
+
+#chat .chat-layout {
+  flex: 1;
+  min-height: calc(100vh - 76px);
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+}
+
+#chat .chat-sidebar {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 16px 14px;
+  background: #080d16;
+  border-right: 1px solid #25334a;
+  box-sizing: border-box;
+}
+
+#chat .chat-sidebar-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+#chat .chat-sidebar-heading h3 {
+  margin: 0;
+  font-size: 22px;
+}
+
+#chat .chat-online-dot,
+#chat .chat-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #a5ff53;
+  box-shadow: 0 0 12px #a5ff5370;
+}
+
+#chat .chat-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid #293950;
+  border-radius: 10px;
+  background: #0d1421;
+}
+
+#chat .chat-search-box > span {
+  color: #a5ff53;
+  font-size: 22px;
+}
+
+#chat .chat-search-box input {
+  min-width: 0;
+  width: 100%;
+  padding: 8px 2px;
+  color: white;
+  background: transparent;
+  border: 0;
+  outline: none;
+}
+
+#chat .chat-search-box button,
+#chat .chat-details-btn {
+  padding: 9px 10px;
+  color: #a5ff53;
+  border: 1px solid #4d713a;
+  border-radius: 7px;
+  background: #142019;
+  font-size: 10px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+#chat #chat-search-message {
+  color: #b8c5d8;
+  font-size: 12px;
+}
+
+#chat #chat-creator-result {
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #34445c;
+  border-radius: 8px;
+}
+
+#chat .chat-list-heading {
+  margin: 24px 0 12px;
+  color: #8190a8;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+#chat .chat-conversation-list {
+  flex: 1;
+  min-height: 120px;
+}
+
+#chat .chat-empty-state {
+  padding: 24px 8px;
+  text-align: center;
+  color: #8190a8;
+}
+
+#chat .chat-empty-state > span {
+  color: #a5ff53;
+  font-size: 30px;
+}
+
+#chat .chat-empty-state p {
+  color: #e5edfa;
+  font-size: 13px;
+}
+
+#chat .chat-empty-state small {
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+#chat .chat-sidebar-footer {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-top: 16px;
+  border-top: 1px solid #25334a;
+  color: #8190a8;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+#chat .chat-main {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#chat .chat-welcome {
+  flex: 1;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#chat .chat-welcome-icon {
+  width: 78px;
+  height: 78px;
+  margin-bottom: 24px;
+  border-radius: 22px;
+  font-size: 42px;
+  box-shadow: 0 0 55px #a5ff5320;
+}
+
+#chat .chat-welcome h2 {
+  margin: 0 0 12px;
+  font-size: clamp(23px, 3vw, 38px);
+}
+
+#chat .chat-welcome > p {
+  max-width: 460px;
+  color: #9baac0;
+  line-height: 1.8;
+}
+
+#chat .chat-feature-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+#chat .chat-feature-row span {
+  padding: 9px 12px;
+  color: #a5ff53;
+  border: 1px solid #344b35;
+  border-radius: 7px;
+  background: #101a14;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+#chat .chat-panel[hidden] {
+  display: none !important;
+}
+
+#chat .chat-panel {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#chat .chat-conversation-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 24px;
+  border-bottom: 1px solid #25334a;
+}
+
+#chat .chat-avatar {
+  width: 44px;
+  height: 44px;
+}
+
+#chat .chat-conversation-header h3 {
+  font-size: 15px;
+}
+
+#chat .chat-details-btn {
+  margin-left: auto;
+}
+
+#chat .chat-messages {
+  flex: 1;
+  min-height: 260px;
+  max-height: 55vh;
+  overflow-y: auto;
+  padding: 22px;
+  margin: 0;
+  background: #050810;
+  border: 0;
+}
+
+#chat .chat-composer {
+  padding: 16px 22px;
+  border-top: 1px solid #25334a;
+  background: #080d16;
+}
+
+#chat #chat-message-input {
+  width: 100%;
+  min-height: 70px;
+  resize: vertical;
+  padding: 14px;
+  color: white;
+  background: #0d1421;
+  border: 1px solid #293950;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+#chat .chat-composer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+#chat .chat-composer-bottom > span {
+  color: #8190a8;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+#chat #send-chat-message-btn {
+  flex-shrink: 0;
+  padding: 12px 18px;
+  color: #07110c;
+  border: 0;
+  border-radius: 8px;
+  background: #a5ff53;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+#chat #chat-send-status {
+  color: #b8c5d8;
+  font-size: 12px;
+}
+
+@media (max-width: 760px) {
+  #chat .chat-topbar {
+    min-height: 66px;
+    padding: 12px;
+  }
+
+  #chat .chat-layout {
+    min-height: calc(100vh - 66px);
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #chat .chat-sidebar {
+    border-right: 0;
+    border-bottom: 1px solid #25334a;
+  }
+
+  #chat .chat-conversation-list {
+    max-height: 150px;
+    overflow-y: auto;
+  }
+
+  #chat .chat-sidebar-footer {
+    margin-top: 12px;
+  }
+
+  #chat .chat-welcome {
+    min-height: 320px;
+    padding: 24px 16px;
+  }
+
+  #chat .chat-conversation-header {
+    padding: 14px;
+  }
+
+  #chat .chat-messages {
+    min-height: 220px;
+    max-height: 45vh;
+    padding: 14px;
+  }
+
+  #chat .chat-composer {
+    padding: 12px;
+  }
+
+  #chat .chat-composer-bottom {
+    align-items: flex-end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #chat {
+    transition: none;
+  }
+}
+
+</style>
+</head>
+<body>
+  <header>
+    <a class="logo" href="#home">YSN <span>STUDIO</span></a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰ MENU</button>
+<nav aria-label="Main navigation">
+      <a href="#home">HOME</a>
+      <a href="#portfolio">PORTFOLIO</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#chat">CHAT</a>
+      <a href="#creators">CREATORS</a>
+      <a href="#partnerships">PARTNERSHIPS</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="eyebrow">YSN STUDIO — C7Y7</p>
+        <h1>THE ART OF<br><span>EDITING.</span></h1>
+        <p class="intro">
+          A creative studio built for cinematic video editing,
+          motion design and the next generation of digital creators.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#portfolio">EXPLORE PORTFOLIO ↗</a>
+          <a class="btn" href="#projects">START A PROJECT</a>
+        </div>
+      </div>
+    </section>
+
+<section class="section" id="account">
+  <p class="eyebrow">YSN STUDIO — MEMBERS</p>
+  <h2>YOUR ACCOUNT</h2>
+  <p>Sign in or create your account.</p>
+
+  <form id="account-form">
+    <label for="account-email">Email</label>
+    <input
+      id="account-email"
+      type="email"
+      placeholder="Enter your email"
+      required
+    >
+
+    <label for="account-password">Password</label>
+    <input
+      id="account-password"
+      type="password"
+      placeholder="At least 6 characters"
+      minlength="6"
+      required
+    >
+
+    <button class="btn primary" type="button" id="signup-btn">
+      CREATE ACCOUNT
+    </button>
+
+    <button class="btn" type="button" id="login-btn">
+      SIGN IN
+    </button>
+
+    <p id="account-message" role="status"></p>
+
+<div id="account-status" hidden>
+  <p>Logged in as:</p>
+  <p id="logged-in-email"></p>
+  <p>Display name:</p>
+<p id="display-name">Loading...</p>
+<label for="profile-name">Your display name</label>
+<input id="profile-name" type="text" placeholder="Enter your display name" maxlength="40">
+
+<label for="profile-username">Your YSN UID</label>
+<input
+  id="profile-username"
+  type="text"
+  placeholder="Choose your UID (3–20 characters)"
+  minlength="3"
+  maxlength="20"
+  pattern="[A-Za-z0-9_]{3,20}"
+  autocomplete="username"
+>
+<p class="profile-hint">
+  Use English letters, numbers, or underscores.
+</p>
+<p id="username-message" role="status"></p>
+
+
+<button class="btn" type="button" id="save-profile-btn">
+  SAVE PROFILE
+</button>
+  <button class="btn" type="button" id="logout-btn">
+    SIGN OUT
+  </button>
+</div>
+</form>
+</section>
+
+   
+<section class="section" id="chat">
+  <div class="chat-app">
+
+    <header class="chat-topbar">
+      <div class="chat-brand">
+        <span class="chat-brand-icon">Y</span>
+        <div>
+          <h2>YSN STUDIO</h2>
+          <p>MESSAGING CENTER</p>
+        </div>
+      </div>
+      <a class="chat-close" href="#home">✕ CLOSE</a>
+    </header>
+
+    <div class="chat-layout">
+
+      <aside class="chat-sidebar">
+        <div class="chat-sidebar-heading">
+          <h3>Messages</h3>
+          <span class="chat-online-dot"></span>
+        </div>
+
+        <div class="chat-search-box">
+          <span>⌕</span>
+          <input
+            id="chat-uid"
+            type="text"
+            placeholder="Search by YSN UID..."
+            minlength="3"
+            maxlength="20"
+            autocomplete="off"
+          >
+          <button type="button" id="find-creator-btn">SEARCH</button>
+        </div>
+
+        <p id="chat-search-message" role="status"></p>
+        <div id="chat-creator-result" hidden></div>
+
+        <div class="chat-list-heading">YOUR CONVERSATIONS</div>
+        <div id="chat-conversation-list" class="chat-conversation-list">
+          <div class="chat-empty-state">
+            <span>✉</span>
+            <p>Your conversations will appear here.</p>
+            <small>Search a creator by their YSN UID to begin.</small>
+          </div>
+        </div>
+
+        <div class="chat-sidebar-footer">
+          <span class="chat-status-dot"></span>
+          YSN PRIVATE MESSAGING
+        </div>
+      </aside>
+
+      <main class="chat-main">
+        <div class="chat-welcome" id="chat-welcome">
+          <div class="chat-welcome-icon">Y</div>
+          <h2>Connect. Create. Collaborate.</h2>
+          <p>Message creators, discuss projects, and build your next collaboration.</p>
+          <div class="chat-feature-row">
+            <span>PRIVATE CHAT</span>
+            <span>PROJECTS</span>
+            <span>CREATORS</span>
+          </div>
+        </div>
+
+        <div class="chat-panel" id="chat-panel" hidden>
+          <div class="chat-conversation-header">
+            <div class="chat-avatar">Y</div>
+            <div>
+              <h3 id="chat-with-name">Conversation</h3>
+              <p>YSN STUDIO MEMBER</p>
+            </div>
+            <button type="button" class="chat-details-btn" id="chat-details-btn">
+              DETAILS
+            </button>
+          </div>
+
+          <div id="chat-messages" class="chat-messages" aria-live="polite"></div>
+
+          <div class="chat-composer">
+            <textarea
+              id="chat-message-input"
+              rows="2"
+              maxlength="2000"
+              placeholder="Write your message..."
+            ></textarea>
+            <div class="chat-composer-bottom">
+              <span>Be respectful. Keep your collaboration professional.</span>
+              <button class="btn" type="button" id="send-chat-message-btn">
+                SEND ↗
+              </button>
+            </div>
+            <p id="chat-send-status" role="status"></p>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+</section>
+
+      <section class="section" id="portfolio">
+  <div class="section-head">
+    <p>SELECTED WORK</p>
+        <h2>Portfolio.</h2>
+      </div>
+      <div class="grid">
+        
+<article class="card video-card">
+  <p class="number">01 / LA VIDA</p>
+  <video controls preload="metadata" width="100%">
+    <source src="portfolio/la%20vida.mp4" type="video/mp4">
+  </video>
+  <h3>La Vida Edit</h3>
+  <p>YSN STUDIO — YASIIN EDIT · C7Y7</p>
+</article>
+
+        <article class="card video-card">
+  <p class="number">01 / CINEMATIC</p>
+  <video controls preload="metadata" width="100%">
+    <source src="portfolio/ronaldo-edit.mp4" type="video/mp4">
+  </video>
+  <h3>Ronaldo Cinematic Edit</h3>
+  <p>YSN STUDIO — YASIIN EDIT · C7Y7</p>
+</article>
+        
+        
+<article class="card video-card">
+  <p class="number">03 / COMMERCIAL</p>
+  <video controls preload="metadata" width="100%">
+    <source src="portfolio/p7.mp4" type="video/mp4">
+  </video>
+  <h3>P7 Edit</h3>
+  <p>YSN STUDIO — YASIIN EDIT · C7Y7</p>
+</article>
+
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-head">
+        <p>COLLABORATION</p>
+        <h2>Projects.</h2>
+      </div>
+      <div class="grid">
+        
+<article class="card">
+  <p class="number">01 / START A PROJECT</p>
+  <h3>Order an Edit</h3>
+  <p>Have a video project in mind? Send us the details to get started.</p>
+  <a class="button" href="#contact">Request a Project</a>
+</article>
+
+        <article class="card" id="creators">
+          <p class="number">02</p>
+          <h3>Creators</h3>
+          <p>A community for editors to showcase work and grow.</p>
+        </article>
+        <article class="card" id="partnerships">
+          <p class="number">03</p>
+          <h3>Partnerships</h3>
+          <p>A dedicated space for brand and studio collaborations.</p>
+        </article>
+      </div>
+    </section>
+
+   
+<section class="section contact" id="contact">
+  <p class="eyebrow">LET'S CREATE SOMETHING DIFFERENT</p>
+  <h2>THE VISION IS BIGGER<br>THAN THE EDIT.</h2>
+  <p>YSN STUDIO — YASIIN EDIT<br>
+  Creative work. Ambitious ideas. C7Y7.</p>
+
+  <form class="contact-form" id="project-form" action="https://formspree.io/f/mppqrryo" method="POST">
+    <label for="client-name">Your Name</label>
+    <input id="client-name" name="Name" type="text" placeholder="Enter your name" required>
+
+    <label for="client-email">Your Email</label>
+    <input id="client-email" name="Email" type="email" placeholder="Enter your email" required>
+
+    <label for="edit-type">Type of Editing</label>
+<select id="edit-type" name="Editing Type" required>
+  <option value="" disabled selected>Select editing type</option>
+  <option value="Football Shorts">Football Shorts</option>
+  <option value="Cinematic Edit">Cinematic Edit</option>
+  <option value="YouTube Video">YouTube Video</option>
+  <option value="Commercial / Brand Video">Commercial / Brand Video</option>
+  <option value="Other">Other</option>
+</select>
+   <label for="project-budget">Project Budget (USD)</label>
+<select id="project-budget" name="Project Budget" required>
+  <option value="" disabled selected>Select your budget</option>
+  <option value="Under $100">Under $100</option>
+  <option value="$100 - $500">$100 - $500</option>
+  <option value="$500 - $1,000">$500 - $1,000</option>
+  <option value="$1,000 - $5,000">$1,000 - $5,000</option>
+  <option value="$5,000+">$5,000+</option>
+  <option value="To be discussed">To be discussed</option>
+</select>
+<label for="project-details">Tell us about your project</label>
+    <textarea id="project-details" name="Project Details" rows="5" placeholder="What kind of edit do you need?" required></textarea>
+
+    <p id="project-message" role="status"></p>
+    <button class="btn primary" type="submit">SEND PROJECT REQUEST</button>
+  </form>
+</section>
+
+  </main>
+
+  <footer>
+    <span>© 2026 YSN STUDIO — YASIIN EDIT</span>
+    <span>BUILT FOR THE NEXT FRAME. · C7Y7</span>
+  </footer>
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const siteHeader = document.querySelector('header');
+  const navLinks = document.querySelectorAll('header nav a');
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = siteHeader.classList.toggle('menu-open');
+
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.setAttribute(
+      'aria-label',
+      isOpen ? 'Close navigation' : 'Open navigation'
+    );
+    menuToggle.textContent = isOpen ? '✕ CLOSE' : '☰ MENU';
+  });
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      siteHeader.classList.remove('menu-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Open navigation');
+      menuToggle.textContent = '☰ MENU';
+    });
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+  const SUPABASE_URL = 'https://zwllwwfaqoqeadfctceu.supabase.co';
+  const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_txGS6ClXsccSACInuYcG7Q_14FVtJtC';
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+</script>
+
+<script>
+  const signupBtn = document.getElementById('signup-btn');
+  const loginBtn = document.getElementById('login-btn');
+  const accountEmail = document.getElementById('account-email');
+  const accountPassword = document.getElementById('account-password');
+  const accountMessage = document.getElementById('account-message');
+  async function checkLoginStatus() {
+    const { data: { session } } =
+      await supabaseClient.auth.getSession();
+
+    if (session) {
+      accountMessage.textContent = 'Welcome back to YSN STUDIO!';
+      document.getElementById('account-status').hidden = false;
+      document.getElementById('logged-in-email').textContent =
+        session.user.email;
+              const { data: profile, error } = await supabaseClient
+  .from('profiles')
+  .select('display_name, username')
+  .eq('id', session.user.id)
+  .maybeSingle();
+      if (!error && profile?.display_name) {
+        
+        document.getElementById('display-name').textContent =
+          profile.display_name;
+        
+          document.getElementById('profile-name').value =
+          profile.display_name;
+      
+          document.getElementById('profile-username').value =
+  profile.username || '';
+        } else {
+        document.getElementById('display-name').textContent =
+          'No display name saved yet.';
+      }
+      signupBtn.hidden = true;
+      loginBtn.hidden = true;
+    }
+  }
+
+  checkLoginStatus();
+  // YSN STUDIO — Find a creator by UID
+const findCreatorBtn = document.getElementById('find-creator-btn');
+const chatUidInput = document.getElementById('chat-uid');
+const chatSearchMessage = document.getElementById('chat-search-message');
+const chatCreatorResult = document.getElementById('chat-creator-result');
+const chatPanel = document.getElementById('chat-panel');
+ let selectedChatUser = null;
+
+findCreatorBtn.addEventListener('click', async () => {
+  const username = chatUidInput.value.trim();
+
+  chatSearchMessage.textContent = '';
+  chatCreatorResult.replaceChildren();
+  chatPanel.hidden = true;
+  selectedChatUser = null;
+
+  if (!/^[a-zA-Z0-9_]{3,20}$/.test(username)) {
+    chatSearchMessage.textContent = 'Enter a valid UID.';
+    return;
+  }
+
+  findCreatorBtn.disabled = true;
+  chatSearchMessage.textContent = 'Searching...';
+
+  try {
+    const { data: { user }, error: authError } =
+      await supabaseClient.auth.getUser();
+
+    if (authError || !user) {
+      chatSearchMessage.textContent = 'Please sign in first.';
+      return;
+    }
+
+    const { data: creator, error } = await supabaseClient
+      .from('profiles')
+      .select('id, display_name, username')
+      .eq('username', username)
+      .maybeSingle();
+
+    if (error) {
+      chatSearchMessage.textContent =
+        'Search failed. Check profile access settings.';
+      return;
+    }
+
+    if (!creator) {
+      chatSearchMessage.textContent = 'UID not found.';
+      return;
+    }
+
+    if (creator.id === user.id) {
+      chatSearchMessage.textContent =
+        'You cannot start a private chat with yourself.';
+      return;
+    }
+
+    const name = document.createElement('p');
+    name.textContent =
+      `${creator.display_name || 'YSN Creator'} (@${creator.username})`;
+
+    const messageButton = document.createElement('button');
+    messageButton.type = 'button';
+    messageButton.className = 'btn';
+    messageButton.textContent = 'MESSAGE';
+
+    messageButton.addEventListener('click', async () => {
+  selectedChatUser = creator;
+  console.log('MESSAGE clicked:', selectedChatUser);
+
+  document.getElementById('chat-with-name').textContent =
+    `Chat with ${creator.display_name || creator.username}`;
+
+  document.getElementById('chat-welcome').hidden = true;
+  chatPanel.hidden = false;
+
+  await loadChatMessages();
+
+  document.getElementById('chat-message-input').focus();
+});
+
+    chatCreatorResult.append(name, messageButton);
+    chatCreatorResult.hidden = false;
+    chatSearchMessage.textContent = 'Creator found!';
+  } catch {
+    chatSearchMessage.textContent =
+      'Connection error. Please try again.';
+  } finally {
+    findCreatorBtn.disabled = false;
+  }
+});
+
+
+const sendChatMessageBtn = document.getElementById('send-chat-message-btn');
+const chatMessageInput = document.getElementById('chat-message-input');
+const chatMessages = document.getElementById('chat-messages');
+const chatSendStatus = document.getElementById('chat-send-status');
+
+async function loadChatMessages() {
+  if (!selectedChatUser) return;
+
+  const { data: { user }, error: authError } =
+    await supabaseClient.auth.getUser();
+
+  if (authError || !user) {
+    chatSendStatus.textContent = 'Please sign in first.';
+    return;
+  }
+
+  const { data, error } = await supabaseClient
+    .from('messages')
+    .select('id, sender_id, receiver_id, content, created_at')
+    .or(
+      `and(sender_id.eq.${user.id},receiver_id.eq.${selectedChatUser.id}),and(sender_id.eq.${selectedChatUser.id},receiver_id.eq.${user.id})`
+    )
+    .order('created_at', { ascending: true });
+
+  if (error) {
+    chatSendStatus.textContent =
+      'Could not load messages: ' + error.message;
+    return;
+  }
+
+  chatMessages.replaceChildren();
+
+  data.forEach((message) => {
+    const messageElement = document.createElement('p');
+
+    messageElement.textContent =
+      `${message.sender_id === user.id ? 'You' : 'Creator'}: ${message.content}`;
+
+    chatMessages.appendChild(messageElement);
+  });
+
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+
+sendChatMessageBtn.addEventListener('click', async () => {
+  const content = chatMessageInput.value.trim();
+  chatSendStatus.textContent = '';
+
+  if (!selectedChatUser) {
+    chatSendStatus.textContent = 'Find a creator first.';
+    return;
+  }
+
+  if (!content || content.length > 2000) {
+    chatSendStatus.textContent = 'Message must be between 1 and 2000 characters.';
+    return;
+  }
+
+  sendChatMessageBtn.disabled = true;
+  chatSendStatus.textContent = 'Sending...';
+
+  try {
+    const { data: { user }, error: authError } =
+      await supabaseClient.auth.getUser();
+
+    if (authError || !user) {
+      chatSendStatus.textContent = 'Please sign in first.';
+      return;
+    }
+
+    const { data, error } = await supabaseClient
+      .from('messages')
+      .insert({
+        sender_id: user.id,
+        receiver_id: selectedChatUser.id,
+        content
+      })
+      .select('id, sender_id, content, created_at')
+      .single();
+
+    if (error) {
+      chatSendStatus.textContent = 'Message failed to send: ' + error.message;
+      return;
+    }
+
+    const messageElement = document.createElement('p');
+    messageElement.textContent = `You: ${data.content}`;
+    chatMessages.appendChild(messageElement);
+    chatMessageInput.value = '';
+    chatSendStatus.textContent = 'Message sent!';
+  } catch {
+    chatSendStatus.textContent = 'Connection error. Please try again.';
+  } finally {
+    sendChatMessageBtn.disabled = false;
+    
+  }
+  });
+signupBtn.addEventListener('click', async () => {
+    const email = accountEmail.value.trim();
+    const password = accountPassword.value;
+
+    if (!email || password.length < 6) {
+      accountMessage.textContent =
+        'Enter a valid email and a password of at least 6 characters.';
+      return;
+    }
+
+    signupBtn.disabled = true;
+    accountMessage.textContent = 'Creating account...';
+
+    try {
+      const { error } = await supabaseClient.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: window.location.origin
+        }
+      });
+
+      accountMessage.textContent = error
+        ? error.message
+        : 'Check your email to confirm your account.';
+    } catch {
+      accountMessage.textContent = 'Connection error. Please try again.';
+    } finally {
+      signupBtn.disabled = false;
+    }
+  });
+
+  loginBtn.addEventListener('click', async () => {
+    const email = accountEmail.value.trim();
+    const password = accountPassword.value;
+
+    if (!email || !password) {
+      accountMessage.textContent = 'Enter your email and password.';
+      return;
+    }
+
+    loginBtn.disabled = true;
+    accountMessage.textContent = 'Signing in...';
+
+    try {
+      const { data, error } =
+        await supabaseClient.auth.signInWithPassword({
+          email,
+          password
+        });
+
+            if (error) {
+        accountMessage.textContent = error.message;
+      } else {
+        accountMessage.textContent = 'Welcome back to YSN STUDIO!';
+        document.getElementById('account-status').hidden = false;
+        document.getElementById('logged-in-email').textContent = data.user.email;
+        signupBtn.hidden = true;
+        loginBtn.hidden = true;
+      }
+    } catch {
+      accountMessage.textContent = 'Connection error. Please try again.';
+    } finally {
+      loginBtn.disabled = false;
+    }
+  });
+  const profileName = document.getElementById('profile-name');
+  const displayName = document.getElementById('display-name');
+  const saveProfileBtn = document.getElementById('save-profile-btn');
+
+const profileUsername = document.getElementById('profile-username');
+const usernameMessage = document.getElementById('username-message');
+
+
+  
+saveProfileBtn.addEventListener('click', async () => {
+  const name = profileName.value.trim();
+  const username = profileUsername.value.trim();
+
+  if (!name) {
+    accountMessage.textContent = 'Enter your display name first.';
+    return;
+  }
+
+  if (!/^[a-zA-Z0-9_]{3,20}$/.test(username)) {
+    usernameMessage.textContent =
+      'UID must be 3–20 characters: English letters, numbers, or underscores.';
+    return;
+  }
+
+  saveProfileBtn.disabled = true;
+  accountMessage.textContent = 'Saving profile...';
+  usernameMessage.textContent = '';
+
+  try {
+    const { data: { user }, error: userError } =
+      await supabaseClient.auth.getUser();
+
+    if (userError || !user) {
+      accountMessage.textContent = 'Please sign in again.';
+      return;
+    }
+
+    const { error } = await supabaseClient
+      .from('profiles')
+      .update({
+        display_name: name,
+        username: username
+      })
+      .eq('id', user.id);
+
+    if (error) {
+      if (error.code === '23505') {
+        usernameMessage.textContent =
+          'This UID is already taken. Choose another one.';
+      } else if (error.code === '23514') {
+        usernameMessage.textContent = 'UID format is invalid.';
+      } else {
+        accountMessage.textContent = error.message;
+      }
+      return;
+    }
+
+    displayName.textContent = name;
+    accountMessage.textContent = 'Profile saved successfully!';
+    usernameMessage.textContent = 'Your UID has been saved.';
+  } catch {
+    accountMessage.textContent = 'Connection error. Please try again.';
+  } finally {
+    saveProfileBtn.disabled = false;
+  }
+});
+
+  const logoutBtn = document.getElementById('logout-btn');
+
+  logoutBtn.addEventListener('click', async () => {
+    logoutBtn.disabled = true;
+    accountMessage.textContent = 'Signing out...';
+
+    try {
+      const { error } = await supabaseClient.auth.signOut();
+
+      if (error) {
+        accountMessage.textContent = error.message;
+        return;
+      }
+
+      document.getElementById('account-status').hidden = true;
+      signupBtn.hidden = false;
+      loginBtn.hidden = false;
+      accountMessage.textContent = 'You have signed out successfully.';
+    } catch {
+      accountMessage.textContent = 'Connection error. Please try again.';
+    } finally {
+      logoutBtn.disabled = false;
+    }
+  });
+
+</script>
+
+<script>
+  const projectForm = document.getElementById('project-form');
+  const projectMessage = document.getElementById('project-message');
+
+  projectForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const submitButton = projectForm.querySelector('button[type="submit"]');
+    const { data: { user }, error: userError } =
+      await supabaseClient.auth.getUser();
+
+    if (userError || !user) {
+      projectMessage.textContent =
+        'Please sign in before submitting a project request.';
+      return;
+    }
+
+    submitButton.disabled = true;
+    projectMessage.textContent = 'Sending your project request...';
+
+    let savedToDatabase = false;
+
+    try {
+      const formData = new FormData(projectForm);
+
+      const { error: insertError } = await supabaseClient
+        .from('project_requests')
+        .insert({
+          user_id: user.id,
+          client_name: formData.get('Name'),
+          client_email: formData.get('Email'),
+          editing_type: formData.get('Editing Type'),
+          project_budget: formData.get('Project Budget'),
+          project_details: formData.get('Project Details')
+        });
+
+      if (insertError) {
+        throw new Error('Database error: ' + insertError.message);
+      }
+
+      savedToDatabase = true;
+
+      const response = await fetch(projectForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' }
+      });
+
+      if (!response.ok) {
+        projectMessage.textContent =
+          'Your request is saved on the site, but the email notification failed.';
+        projectForm.reset();
+        return;
+      }
+
+      projectMessage.textContent =
+        'Project request sent successfully! Thank you.';
+      projectForm.reset();
+
+    } catch (error) {
+      projectMessage.textContent = savedToDatabase
+        ? 'Your request is saved on the site, but the email notification may have failed.'
+        : 'Could not save your request. Please try again.';
+      console.error(error);
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+</script>
+
+
+<style>
+  #ysn-mini-player {
+    position: relative;
+    width: 245px;
+    margin-left: 1100px;
+margin-top: -3450px;
+    padding: 8px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-sizing: border-box;
+    background: #080d16;
+    border: 1px solid #168cff80;
+    border-radius: 9px;
+    box-shadow: 0 0 12px #168cff20;
+  }
+
+  #ysn-mini-player button {
+    flex: 0 0 25px;
+    width: 25px;
+    height: 27px;
+    padding: 0;
+    color: #168cff;
+    background: #101b2a;
+    border: 1px solid #28435f;
+    border-radius: 5px;
+    font-size: 10px;
+    cursor: pointer;
+  }
+
+  #ysn-mini-player button:hover {
+    border-color: #168cff;
+    color: white;
+  }
+
+  #ysn-track-board {
+    flex: 1;
+    min-width: 0;
+    height: 25px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background: #091522;
+    border: 1px solid #168cff;
+    border-radius: 4px;
+  }
+
+  #ysn-track-text {
+    display: inline-block;
+    padding-left: 100%;
+    white-space: nowrap;
+    color: #75bdff;
+    font: 11px Arial, sans-serif;
+    animation: ysn-marquee 12s linear infinite;
+  }
+
+  @keyframes ysn-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+
+  @media (max-width: 480px) {
+    #ysn-mini-player {
+      right: 10px;
+      bottom: 10px;
+      width: 220px;
+    }
+  }
+</style>
+
+<div id="ysn-mini-player">
+  <button id="ysn-prev" type="button" aria-label="Previous song">|◀</button>
+  <button id="ysn-play" type="button" aria-label="Play music">▶</button>
+  <button id="ysn-next" type="button" aria-label="Next song">▶|</button>
+
+  <div id="ysn-track-board">
+    <div id="ysn-track-text">YSN STUDIO • Ready to play</div>
+  </div>
+
+  <audio id="ysn-audio" preload="metadata"></audio>
+</div>
+
+<script>
+(() => {
+  const audio = document.getElementById('ysn-audio');
+  const playBtn = document.getElementById('ysn-play');
+  const prevBtn = document.getElementById('ysn-prev');
+  const nextBtn = document.getElementById('ysn-next');
+  const trackText = document.getElementById('ysn-track-text');
+  const player = document.getElementById('ysn-mini-player');
+
+  
+const tracks = [
+  {
+    title: 'Ya No Estás (Super Slowed)',
+    artist: 'Theblvcks, Sher, Hugz, Mxeen, Kir0x',
+    src: 'music/Ya_No_Estás_super_Slowed_-_Theblvcks_Sher_Hugz_Mxeen_Kir0x_-comixmusic.ir.mp3'
+  },
+  {
+    title: 'LEKA DEVAGAR (SUPER SLOWED)',
+    artist: 'Clayzn LeoTHM',
+    src: 'music/LEKA DEVAGAR (SUPER SLOWED)   Clayzn LeoTHM.m4a'
+  },
+  {
+    title: 'Gata Only',
+    artist: 'Floyymenor ft Chris Mj',
+    src: 'music/Floyymenor ft Chris Mj - Gata Only (320).mp3'
+  },
+  {
+    title: 'Ethereal',
+    artist: 'YSN STUDIO',
+    src: 'music/Ethereal.mp3'
+  },
+  {
+    title: 'Copines (Slowed TikTok)',
+    artist: 'Aya Nakamura',
+    src: 'music/aya_nakamura_-_copines_(slowed_tiktok)_0ghr.mp3'
+  }
+];
+
+
+  let currentTrack = 0;
+
+  function loadTrack(index) {
+    currentTrack = (index + tracks.length) % tracks.length;
+    const track = tracks[currentTrack];
+
+    audio.src = track.src;
+    trackText.textContent = `♫ ${track.title} — ${track.artist} • YSN STUDIO ♫`;
+
+    trackText.style.animation = 'none';
+    void trackText.offsetWidth;
+    trackText.style.animation = '';
+
+    playBtn.textContent = '▶';
+  }
+
+  playBtn.addEventListener('click', async () => {
+    if (audio.paused) {
+      try {
+        await audio.play();
+        playBtn.textContent = 'Ⅱ';
+      } catch {
+        trackText.textContent = 'Check music/track1.mp3';
+      }
+    } else {
+      audio.pause();
+      playBtn.textContent = '▶';
+    }
+  });
+
+  nextBtn.addEventListener('click', async () => {
+    loadTrack(currentTrack + 1);
+    try {
+      await audio.play();
+      playBtn.textContent = 'Ⅱ';
+    } catch {
+      playBtn.textContent = '▶';
+    }
+  });
+
+  prevBtn.addEventListener('click', async () => {
+    loadTrack(currentTrack - 1);
+    try {
+      await audio.play();
+      playBtn.textContent = 'Ⅱ';
+    } catch {
+      playBtn.textContent = '▶';
+    }
+  });
+
+    audio.addEventListener('ended', () => {
+    loadTrack(currentTrack + 1);
+
+    audio.play()
+      .then(() => {
+        playBtn.textContent = 'Ⅱ';
+      })
+      .catch(() => {
+        playBtn.textContent = '▶';
+        trackText.textContent =
+          'Unable to play this track — check the file name or format';
+      });
+  });
+
+  audio.addEventListener('error', () => {
+    playBtn.textContent = '▶';
+  });
+
+  loadTrack(0);
+})();
+
+</script>
+
+</body>
+</html>
